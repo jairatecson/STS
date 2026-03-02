@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduFuture · science meets learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>EduFuture · science meets learning · mobile fixed</title>
   <!-- Professional type system: Inter + Playfair Display for editorial weight -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,26 +18,27 @@
       box-sizing: border-box;
     }
 
-:root {
-  --bg-light: #ddd0c5;          /* warm roasted cream */
-  --surface-white: #efe4da;     /* soft cappuccino foam */
-  --text-primary: #1f1511;      /* deep espresso */
-  --text-secondary: #5a463c;    /* dark mocha */
-  --accent: #9c4f2a;            /* roasted caramel */
-  --border-light: #cdb9ac;      /* toasted beige */
-  --card-shadow: 0 18px 35px -14px rgba(40, 25, 18, 0.35); /* rich brown shadow */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-}
+    :root {
+      --bg-light: #ddd0c5;          /* warm roasted cream */
+      --surface-white: #efe4da;     /* soft cappuccino foam */
+      --text-primary: #1f1511;      /* deep espresso */
+      --text-secondary: #5a463c;    /* dark mocha */
+      --accent: #9c4f2a;            /* roasted caramel */
+      --border-light: #cdb9ac;      /* toasted beige */
+      --card-shadow: 0 18px 35px -14px rgba(40, 25, 18, 0.35); /* rich brown shadow */
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+    }
+
     body {
       background-color: var(--bg-light);
       color: var(--text-primary);
-      /* switch main text to Times New Roman; increase size for better readability */
       font-family: "Times New Roman", serif;
       font-size: 1.1rem;
-      /* slightly tighter line spacing for a more typical paragraph feel */
       line-height: 1.5;
       font-weight: 400;
+      overflow-x: hidden; /* kill any horizontal scroll */
+      width: 100%;
     }
 
     h1, h2, h3, h4 {
@@ -59,29 +60,32 @@
     .navbar {
       position: absolute;
       width: 100%;
-      padding: 1.5rem 2rem;
+      padding: 1.2rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 20;
       background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, transparent 90%);
+      flex-wrap: wrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.2rem;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       color: white;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
       letter-spacing: 0.03em;
       text-transform: uppercase;
       transition: 0.2s ease;
       border-bottom: 1.5px solid transparent;
       padding-bottom: 4px;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -95,7 +99,8 @@
       position: relative;
       display: flex;
       align-items: center;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
+      min-height: 600px;
     }
     
     .hero::after {
@@ -108,12 +113,12 @@
     .hero-content {
       position: relative;
       color: white;
-      max-width: 720px;
+      max-width: 620px;
       z-index: 2;
     }
     
     .hero h1 {
-      font-size: 54px;
+      font-size: 48px;
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 20px;
@@ -133,7 +138,7 @@
       color: var(--text-primary);
       font-weight: 600;
       font-size: 0.9rem;
-      padding: 0.9rem 2.2rem;
+      padding: 0.9rem 2rem;
       text-decoration: none;
       transition: all 0.25s;
       border: 1px solid transparent;
@@ -146,7 +151,7 @@
       border-color: white;
     }
 
-    /* wave – straight edges */
+    /* wave */
     .wave {
       margin-top: -2px;
       line-height: 0;
@@ -154,40 +159,43 @@
     .wave svg {
       display: block;
       width: 100%;
+      height: auto;
       fill: var(--bg-light);
     }
 
-    /* ---------- main grid – tighter margins ---------- */
+    /* ---------- main grid – mobile first ---------- */
     .main-grid {
-      max-width: 1700px;
-      margin: 2rem auto 4rem;
-      padding: 0 1.5rem;
+      max-width: 1400px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1rem;
       display: grid;
-      grid-template-columns: minmax(0, 3.5fr) 1fr;
+      grid-template-columns: 1fr; /* stacked on mobile */
       gap: 2rem;
-      align-items: start;
     }
 
-    /* articles column – square corners */
+    /* articles column */
     .article-feed {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .article-card {
       background: var(--surface-white);
-      padding: 2rem;
+      padding: 1.5rem 1.2rem;
       box-shadow: var(--card-shadow);
       border: 1px solid var(--border-light);
+      width: 100%;
+      overflow-wrap: break-word;
     }
 
     .article-card h3 {
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       margin-bottom: 0.25rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .article-card h3 i {
@@ -200,29 +208,36 @@
       height: 3px;
       background: var(--accent);
       border: none;
-      margin: 0.8rem 0 1.5rem;
+      margin: 0.8rem 0 1.2rem;
     }
 
     .article-card p {
       color: var(--text-secondary);
-      /* reduced gap between paragraphs for normal flow */
       margin-bottom: 1rem;
     }
 
-    /* image grid – square corners */
+    /* image grid – mobile safe */
     .image-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      margin: 1.8rem 0 1rem;
+      margin: 1.5rem 0 1rem;
     }
 
     .image-grid img {
-      flex: 1 1 180px;
-      height: 150px;
+      flex: 1 1 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 200px;
       object-fit: cover;
       box-shadow: 0 8px 18px -8px rgba(0,0,0,0.2);
       transition: transform 0.3s;
+    }
+    @media (min-width: 550px) {
+      .image-grid img {
+        flex: 1 1 180px;
+        height: 150px;
+      }
     }
 
     .image-grid img:hover {
@@ -231,7 +246,7 @@
 
     .highlight {
       background: #f3efeb;
-      padding: 1.5rem 1.8rem;
+      padding: 1.5rem 1.2rem;
       border-left: 5px solid var(--accent);
       margin: 1.5rem 0 0.5rem;
     }
@@ -241,48 +256,43 @@
       margin: 1.8rem 0 0.5rem;
       box-shadow: 0 18px 28px -12px rgba(0,0,0,0.2);
       border: 1px solid #eae1da;
+      width: 100%;
     }
 
     .video-wrapper-modern iframe {
       width: 100%;
-      height: 450px;
+      height: auto;
+      min-height: 240px;
+      aspect-ratio: 16/9;
       display: block;
       border: none;
     }
 
-    /* ---------- SIDEBAR – TOC & MEMBERS ---------- */
+    /* ---------- SIDEBAR – restyled for mobile ---------- */
     .sidebar {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
-    /* divider line between sidebar panels */
-    .sidebar-divider {
-      border: none;
-      height: 1px;
-      background: var(--border-light);
-      margin: 1rem 0;
-    }
-
-    .toc-panel {
+    .toc-panel, .members-panel, .chart-panel {
       background: var(--surface-white);
       border-radius: 38px;
-      padding: 2.5rem 2rem;
+      padding: 2rem 1.5rem;
       box-shadow: 0 18px 36px -18px rgba(0,0,0,0.2);
       border: 1px solid var(--border-light);
+      width: 100%;
     }
 
     .toc-panel h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #26201c;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
     }
 
     .toc-panel ol {
       list-style-position: inside;
       color: var(--text-secondary);
+      padding-left: 0;
     }
 
     .toc-panel li {
@@ -294,7 +304,7 @@
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
-      transition: opacity 0.2s;
+      word-break: break-word;
     }
 
     .toc-panel a:hover {
@@ -302,122 +312,113 @@
       text-decoration: underline;
     }
 
-    .members-panel {
-    background: var(--surface-white);
-    border-radius: 38px;  /* Curved corners */
-    padding: 2.5rem 2rem;
-    box-shadow: 0 18px 36px -18px rgba(0,0,0,0.2);
-    border: 1px solid var(--border-light);
-    /* remove sticky so panel stays in document flow */
-    position: static;
-    transition: all 0.2s;
-    margin-bottom: 1.5rem; /* space before next panel */
-    }
-
     .members-panel h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 0.2rem;
-    color: #26201c;
+      font-size: 2rem;
+      margin-bottom: 0.2rem;
     }
 
     .members-panel .subhead {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    border-bottom: 2px dotted #d9cdc2;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    text-align: left;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      border-bottom: 2px dotted #d9cdc2;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
     }
 
     .member-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .member-entry {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.5rem 0.5rem 0.5rem 0;
-    border-radius: 60px;  /* Rounded member items */
-    transition: background 0.15s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.25rem 0.25rem 0.25rem 0;
+      border-radius: 60px;
+      transition: background 0.15s, transform 0.2s;
     }
 
     .member-entry:hover {
-    background: #faf3ef;
-    transform: translateX(6px);
+      background: #faf3ef;
+      transform: translateX(6px);
     }
 
     .member-entry img {
-    width: 70px;  /* Slightly larger like original */
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #cbb9ac;  /* Original member ring color */
-    box-shadow: 0 8px 18px -6px rgba(0,0,0,0.2);
-    transition: border-color 0.2s;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #cbb9ac;
+      box-shadow: 0 8px 18px -6px rgba(0,0,0,0.2);
+      flex-shrink: 0;
     }
 
     .member-entry:hover img {
-    border-color: var(--accent);
+      border-color: var(--accent);
     }
 
     .member-meta p {
-    font-weight: 600;
-    color: #312e2b;
-    line-height: 1.3;
+      font-weight: 600;
+      color: #312e2b;
+      line-height: 1.3;
     }
 
     .member-meta .role {
-    font-size: 0.8rem;
-    color: #7b6e64;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 400;
-    margin-top: 2px;
+      font-size: 0.8rem;
+      color: #7b6e64;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 400;
+      margin-top: 2px;
     }
 
     .panel-footnote {
-    margin-top: 2.5rem;
-    font-size: 0.9rem;
-    color: #7b6e64;
-    text-align: center;
-    border-top: 2px dotted #d9cdc2;
-    padding-top: 1.8rem;
-    font-style: italic;
-    }
-
-    /* chart panel (sidebar) */
-    .chart-panel {
-      background: var(--surface-white);
-      border-radius: 38px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 18px 36px -18px rgba(0,0,0,0.2);
-      border: 1px solid var(--border-light);
-      margin-top: 1.5rem;
-      position: static;
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: #7b6e64;
+      text-align: center;
+      border-top: 2px dotted #d9cdc2;
+      padding-top: 1.8rem;
+      font-style: italic;
     }
 
     .chart-panel h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: #26201c;
     }
 
     .chart-panel canvas {
       width: 100% !important;
-      height: 200px !important;
+      height: auto !important;
+      max-height: 220px;
+    }
+
+    .chart-citation {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      word-break: break-word;
+    }
+    .chart-citation a {
+      color: var(--accent);
+    }
+
+    /* sidebar divider (hidden on small screens) */
+    .sidebar-divider {
+      border: none;
+      height: 1px;
+      background: var(--border-light);
+      margin: 0.5rem 0;
     }
 
     /* ---------- footer ---------- */
     .footer {
       background: #24211e;
       color: #ddd6cf;
-      padding: 3rem 1.5rem;
+      padding: 2.5rem 1rem;
       border-top: 5px solid var(--accent);
     }
 
@@ -425,14 +426,15 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2rem 1rem;
     }
 
     .footer-grid h4 {
       color: white;
       font-family: var(--font-sans);
       margin-bottom: 1rem;
+      font-size: 1.1rem;
     }
 
     .footer-grid a, .footer-grid p {
@@ -441,17 +443,14 @@
       font-size: 0.9rem;
       display: block;
       margin-bottom: 0.4rem;
-    }
-
-    .footer-grid a:hover {
-      color: white;
+      word-break: break-word;
     }
 
     /* Back to Top Button */
     .back-to-top {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
       width: 50px;
       height: 50px;
       background: var(--accent);
@@ -471,61 +470,59 @@
     .back-to-top:hover {
       background: #8a3a1f;
       transform: translateY(-3px);
-      box-shadow: 0 12px 24px -8px rgba(0,0,0,0.4);
     }
 
     .back-to-top.show {
       display: flex;
     }
 
-    /* responsive */
-    @media (max-width: 900px) {
+    /* medium screens and up */
+    @media (min-width: 900px) {
       .main-grid {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
+        grid-template-columns: minmax(0, 3.5fr) 1fr;
+        padding: 0 1.5rem;
       }
-      .sidebar {
-        flex-direction: row;
-        gap: 1.5rem;
+      .article-card {
+        padding: 2rem;
       }
-      .toc-panel {
-        flex: 1;
+      .image-grid img {
+        flex: 1 1 180px;
+        height: 150px;
       }
-      .members-panel {
-        flex: 1;
-        position: static;
-      }
-      .navbar {
-        padding: 1rem;
-      }
-      .nav-links {
-        gap: 1rem;
+      .video-wrapper-modern iframe {
+        height: 360px;
       }
     }
-    @media (max-width: 550px) {
-      .hero h1 { font-size: 2.5rem; }
-      .hero { padding: 0 1rem; }
-      .article-card { padding: 1.5rem; }
-      .sidebar {
-        flex-direction: column;
+
+    /* small phones extra tweaks */
+    @media (max-width: 450px) {
+      .navbar {
+        padding: 1rem 0.8rem;
       }
-      .toc-panel {
-        padding: 1.5rem 1.2rem;
-        border-radius: 20px;
+      .nav-links {
+        gap: 0.6rem;
       }
-      .toc-panel h2 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
+      .nav-links a {
+        font-size: 0.7rem;
       }
-      .toc-panel ol {
-        font-size: 0.9rem;
+      .hero h1 {
+        font-size: 2.5rem;
       }
-      .toc-panel li {
-        margin-bottom: 0.6rem;
+      .hero p {
+        font-size: 0.95rem;
+      }
+      .btn {
+        padding: 0.8rem 1.5rem;
+      }
+      .article-card h3 {
+        font-size: 1.5rem;
       }
       .members-panel {
-        padding: 1.5rem 1.2rem;
-        border-radius: 20px;
+        padding: 1.5rem 1rem;
+      }
+      .member-entry img {
+        width: 55px;
+        height: 55px;
       }
     }
   </style>
@@ -563,13 +560,11 @@
       <article class="article-card" id="intro">
         <h3><i class="fas fa-graduation-cap"></i> INTRODUCTION</h3>
         <hr class="article-divider">
-        <p>For generations, the Philippine educational system was synonymous with the "chalk and blackboard" method, where learning was largely confined to the four walls of the classroom and the pages of a textbook. However, the landscape is rapidly shifting. The advent of the internet and the proliferation of Information and Communication Technology (ICT) have begun to reshape the delivery of education, promising a more "interactive and collaborative" experience. Key government initiatives like DepEd Commons have emerged as vital platforms, providing "free online educational resources" to supplement traditional learning. While these technologies hold the potential to democratize access to information, the transition to a "digital classroom" is far from seamless. The reality is often marked by a persistent "digital divide," where unequal access to gadgets and stable connectivity threatens to exacerbate, rather than alleviate, existing educational inequities.
-
-</em>.</p>
+        <p>For generations, the Philippine educational system was synonymous with the "chalk and blackboard" method, where learning was largely confined to the four walls of the classroom and the pages of a textbook. However, the landscape is rapidly shifting. The advent of the internet and the proliferation of Information and Communication Technology (ICT) have begun to reshape the delivery of education, promising a more "interactive and collaborative" experience. Key government initiatives like DepEd Commons have emerged as vital platforms, providing "free online educational resources" to supplement traditional learning. While these technologies hold the potential to democratize access to information, the transition to a "digital classroom" is far from seamless. The reality is often marked by a persistent "digital divide," where unequal access to gadgets and stable connectivity threatens to exacerbate, rather than alleviate, existing educational inequities.</p>
         <div class="image-grid">
-          <img src="https://images.stockcake.com/public/8/6/e/86e415b2-b6f7-42d5-bda9-c8d15530404e_large/rural-classroom-teaching-stockcake.jpg" alt="students with tablets">
-          <img src="https://www.addu.edu.ph/wp-content/uploads/2015/05/library.jpg" alt="public school classroom">
-          <img src="https://www.scidev.net/asia-pacific/wp-content/uploads/sites/4/Philippine-STEM-students-main-996x567.jpg" alt="tech in education graph">
+          <img src="https://images.stockcake.com/public/8/6/e/86e415b2-b6f7-42d5-bda9-c8d15530404e_large/rural-classroom-teaching-stockcake.jpg" alt="students with tablets" loading="lazy">
+          <img src="https://www.addu.edu.ph/wp-content/uploads/2015/05/library.jpg" alt="public school classroom" loading="lazy">
+          <img src="https://www.scidev.net/asia-pacific/wp-content/uploads/sites/4/Philippine-STEM-students-main-996x567.jpg" alt="tech in education graph" loading="lazy">
         </div>
       </article>
 
@@ -577,7 +572,7 @@
       <article class="article-card" id="impact">
         <h3><i class="fas fa-microscope"></i> Impact: science & technology in Filipino society</h3>
         <hr class="article-divider">
-        <p>The Dual-Edged Sword: Unpacking the Impact of Science and Technology on Philippine Education<br>
+        <p><strong>The Dual-Edged Sword: Unpacking the Impact of Science and Technology on Philippine Education</strong><br>
 The integration of science and technology into the Philippine educational system is not a simple story of progress; it is a complex narrative of promises made and challenges unmet. The impact is best understood as a dual-edged sword, offering unprecedented opportunities while simultaneously exposing and deepening existing societal fault lines.</p>
 
         <p><strong>The Promise: Positive Impacts and Transformative Potential</strong><br>
@@ -598,15 +593,16 @@ However, this technological shift casts a long shadow. The most pressing issue i
         </div>
 
         <div class="video-wrapper-modern">
-        <iframe 
+          <iframe 
             src="https://player.vimeo.com/video/1169592950?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
             title="The Philippines Education Problem, Explained"
             loading="lazy"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
             allowfullscreen
             style="border:none;">
-        </iframe>
+          </iframe>
         </div>
+      </article> <!-- end card 2 -->
 
       <!-- Card 3 -->
       <article class="article-card" id="visual">
@@ -614,9 +610,9 @@ However, this technological shift casts a long shadow. The most pressing issue i
         <hr class="article-divider">
         <p>These snapshots reflect Filipino learning environments: a rural classroom with tablets, collaborative computer use, and EdTech growth. Each image underscores the fusion of science, technology, and pedagogy.</p>
         <div class="image-grid">
-          <img src="https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?q=80&w=1374&auto=format&fit=crop" alt="children with tablet">
-          <img src="https://images.unsplash.com/photo-1588072432836-e100327ed50e?q=80&w=1472&auto=format&fit=crop" alt="student using laptop">
-          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1440&auto=format&fit=crop" alt="classroom tech">
+          <img src="https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?q=80&w=1374&auto=format&fit=crop" alt="children with tablet" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1588072432836-e100327ed50e?q=80&w=1472&auto=format&fit=crop" alt="student using laptop" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1440&auto=format&fit=crop" alt="classroom tech" loading="lazy">
         </div>
       </article>
     </div>
@@ -639,51 +635,52 @@ However, this technological shift casts a long shadow. The most pressing issue i
         <h2>Members</h2>
         <div class="subhead">the minds behind the research</div>
         <div class="member-list">
-        <div class="member-entry">
-          <img src="https://i.redd.it/240929-maloi-ig-post-v0-u8mp4nlfuqrd1.jpg?width=1080&format=pjpg&auto=webp&s=9b42e6e1382d29a0c208f11c65778e101fef0141" alt="Maloi R.">
-          <div class="member-meta">
-            <p>Maloi R.</p>
-            <span class="role">learning designer</span>
+          <div class="member-entry">
+            <img src="https://i.redd.it/240929-maloi-ig-post-v0-u8mp4nlfuqrd1.jpg?width=1080&format=pjpg&auto=webp&s=9b42e6e1382d29a0c208f11c65778e101fef0141" alt="Maloi R." loading="lazy">
+            <div class="member-meta">
+              <p>Maloi R.</p>
+              <span class="role">learning designer</span>
+            </div>
+          </div>
+          <div class="member-entry">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrsYpd5wGriGyBqQA91eqjU3AMSnu1I9IsXA&s" alt="Joanna M." loading="lazy">
+            <div class="member-meta">
+              <p>Joanna M.</p>
+              <span class="role">VR curriculum</span>
+            </div>
+          </div>
+          <div class="member-entry">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa6c4-NF3vrN7CrwH4DZHyjI6dxOeBxjyaGg&s" alt="Mikha L." loading="lazy">
+            <div class="member-meta">
+              <p>Mikha L.</p>
+              <span class="role">data scientist</span>
+            </div>
+          </div>
+          <div class="member-entry">
+            <img src="https://www.famousbirthdays.com/faces/clee-skusta-image.jpg" alt="Skusta Clee" loading="lazy">
+            <div class="member-meta">
+              <p>Skusta Clee</p>
+              <span class="role">music & memory</span>
+            </div>
+          </div>
+          <div class="member-entry">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ1keqvVQfh3GVGf2VlcootFkBiWzVvUQvRg&s" alt="Kween Y." loading="lazy">
+            <div class="member-meta">
+              <p>Kween Y.</p>
+              <span class="role">policy advisor</span>
+            </div>
           </div>
         </div>
-        <div class="member-entry">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrsYpd5wGriGyBqQA91eqjU3AMSnu1I9IsXA&s" alt="Joanna M.">
-          <div class="member-meta">
-            <p>Joanna M.</p>
-            <span class="role">VR curriculum</span>
-          </div>
-        </div>
-        <div class="member-entry">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa6c4-NF3vrN7CrwH4DZHyjI6dxOeBxjyaGg&s" alt="Mikha L.">
-          <div class="member-meta">
-            <p>Mikha L.</p>
-            <span class="role">data scientist</span>
-          </div>
-        </div>
-        <div class="member-entry">
-          <img src="https://www.famousbirthdays.com/faces/clee-skusta-image.jpg" alt="Skusta Clee">
-          <div class="member-meta">
-            <p>Skusta Clee</p>
-            <span class="role">music & memory</span>
-          </div>
-        </div>
-        <div class="member-entry">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ1keqvVQfh3GVGf2VlcootFkBiWzVvUQvRg&s" alt="Kween Y.">
-          <div class="member-meta">
-            <p>Kween Y.</p>
-            <span class="role">policy advisor</span>
-          </div>
-        </div>
-      </div>
-      <hr class="sidebar-divider">
+        <div class="panel-footnote">founded 2025 · all views simulated</div>
+      </div> <!-- end members -->
 
       <!-- Internet Penetration Chart -->
       <div class="chart-panel">
         <h2>Live Internet Penetration</h2>
         <canvas id="internetChart" width="300" height="200"></canvas>
-      <p class="chart-citation" style="font-size:0.75rem; color: var(--text-secondary); margin-top:0.5rem;">
-        Data source: <a href="https://www.researchgate.net/figure/nternet-user-in-the-Philippines-Forecast-2017-2026_fig1_369015673" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">ResearchGate forecast image (2017–2026)</a>
-      </p>
+        <p class="chart-citation">
+          Data source: <a href="https://www.researchgate.net/figure/nternet-user-in-the-Philippines-Forecast-2017-2026_fig1_369015673" target="_blank" rel="noopener">ResearchGate forecast (2017–2026)</a>
+        </p>
       </div>
     </aside>
   </div>
@@ -739,29 +736,12 @@ However, this technological shift casts a long shadow. The most pressing issue i
     });
 
     backToTopBtn.addEventListener('click', () => {
-      const scrollDuration = 1500; // 1.5 seconds
+      const scrollDuration = 1500;
       const scrollStart = window.scrollY;
       const scrollEnd = 0;
       const scrollDistance = scrollEnd - scrollStart;
-      let scrollProgress = 0;
-
-      const scroll = () => {
-        scrollProgress += 16.67 / scrollDuration;
-        if (scrollProgress > 1) scrollProgress = 1;
-        
-        const ease = scrollProgress < 0.5 
-          ? 2 * scrollProgress * scrollProgress 
-          : -1 + (4 - 2 * scrollProgress) * scrollProgress;
-        
-        window.scrollY(scrollStart + scrollDistance * ease);
-        
-        if (scrollProgress < 1) {
-          requestAnimationFrame(scroll);
-        }
-      };
-
-      // Use a polyfill for easier cross-browser compatibility
       const startTime = performance.now();
+      
       const animate = (currentTime) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / scrollDuration, 1);
@@ -779,7 +759,7 @@ However, this technological shift casts a long shadow. The most pressing issue i
       requestAnimationFrame(animate);
     });
 
-    // internet penetration chart
+    // internet penetration chart (static)
     const ctx = document.getElementById('internetChart').getContext('2d');
     const penetrationData = {
       labels: ['2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'],
@@ -794,24 +774,17 @@ However, this technological shift casts a long shadow. The most pressing issue i
       }]
     };
 
-    const internetChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: penetrationData,
       options: {
         responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
+        maintainAspectRatio: true,
+        scales: { y: { beginAtZero: true, max: 100 } }
       }
     });
 
-    // no live updates – data remains static through 2026
-    // previous code simulated new years and was causing the chart to keep moving
-    // remove the setInterval block so the chart stays fixed at the 2026 label.
+    // no dynamic updates – stays fixed.
   </script>
 </body>
 </html>
